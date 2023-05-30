@@ -29,6 +29,14 @@ def login():
     password.send_keys("Zara_hawwa")
     submit   = browser.find_element(By.NAME, "login")
     submit.click()
+    
+def sender():
+    newmessage = WebDriverWait(browser,20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div[aria-label='New message']")))
+    newmessage.click()
+    search= WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "input[aria-label='Send message to']")))
+    search.send_keys("muhasina jalal")
+    reciever = WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "a[role = 'presentation']")))
+    reciever.send_keys(Keys.RETURN)
 
     
 
@@ -40,16 +48,9 @@ browser = webdriver.Chrome(options=options)
 
 
 login()
+sender()
 
-messenger = WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div[aria-label='Messenger']")))
-messenger.click()
-time.sleep(5)
-#new_message = WebDriverWait(browser,20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div[aria-label='New Message']")))
-#new_message.click()
-#reciever = WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "input[aria-label='Search Messenger']")))
-#reciever.send_keys("muhasina jalal")
-#reciever.send_keys(Keys.TAB).click()
-
+#message = WebDriverWait(browser,20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div[aria-label='Message']")))
 
 
 
